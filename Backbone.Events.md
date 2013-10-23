@@ -13,6 +13,17 @@
 > book.on("change:title change:author", ...);
 
 当回调函数执行时提供的第三个参数，可以为this指定上下文：`model.on('change', this.render, this)`   
-任何事件发生时，都会执行绑定到`all`事件上的回调函数，并且把
+任何事件发生时，都会执行绑定到`all`事件上的回调函数，且第一个参数为事件的名称。例如，将一个对象的所有事件代理到另一个对象：  
+    
+    proxy.bind('all', function(eventName){
+        object.trigger(eventName);
+    });
+
+所有的事件方法也都支持事件的语法映射，作为可选的定制参数:
+
+    book.on({
+        "change:title": titleView.update,
+        "change:author": authorPane.update
+    });
  
 
