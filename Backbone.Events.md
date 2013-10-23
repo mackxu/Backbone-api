@@ -9,5 +9,10 @@
 	});
 	object.trigger('alert', 'an events');
 **on** `object.on(event, callback, [context])`  *Alias: bind*   
+绑定回调函数`callback`到对象`object`.当事件被触发时执行绑定的`callback`。如果页面中有大量的事件，按照惯例使用冒号制定命名空间：`poll:start`或`change:selection`。事件字符串也可以由几个空格分隔的事件组成。
+> book.on("change:title change:author", ...);
+
+当回调函数执行时提供的第三个参数，可以为this指定上下文：`model.on('change', this.render, this)`   
+任何事件发生时，都会执行绑定到`all`事件上的回调函数，并且把
  
 
